@@ -14,4 +14,6 @@ echo "post-create start" >> ~/status
 
 echo alias k=kubectl >> /home/vscode/.zshrc
 
+make create
+
 echo "post-create complete" >> ~/status
