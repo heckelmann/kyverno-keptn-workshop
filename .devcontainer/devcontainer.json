@@ -1,6 +1,7 @@
 {
-	"name": "Kubernetes-in-Codespaces",
-	"dockerFile": "Dockerfile",
+	"name": "Kyverno-Keptn-Workshop",
+	//"dockerFile": "Dockerfile",
+	"image": "ghcr.io/heckelmann/kyverno-keptn-workshop:0.0.1",
 
 	// do not change these if you want Docker in Docker support
 	"runArgs": ["--init", "--privileged", "--network=host"],
