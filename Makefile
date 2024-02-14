@@ -27,3 +27,8 @@ create:
 	@echo ""
 	@echo ""
 	@echo "🎉 Installation Complete! 🎉"
+
+ready:
+	@kubectl wait --for=condition=available deployment/argocd-server -n argocd --timeout=300s
+	@echo "ArgoCD Admin Password"
+	@kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
