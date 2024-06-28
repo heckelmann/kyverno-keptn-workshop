@@ -13,4 +13,4 @@ spec:
   promotionTasks:
     # - promote
   metadata:
-    commitID: {{.Values.commitID}}
+    commitID: {{ .Values.commitID }}

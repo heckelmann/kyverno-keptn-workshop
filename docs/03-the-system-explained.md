@@ -1,8 +1,8 @@
 # The System Explained
 
-The workshop environment is now completely installed. If you look at Argo, you will notice a couple things.
+The workshop environment is now completely installed. If you look at Argo, you will notice a couple of things.
 
-A `demo-app-dev` and a `demo-app-prod` is already installed, alongside with a set of applications and services.
+A `demo-app-dev` and a `demo-app-prod` are already installed, alongside a set of applications and services.
 
 During the workshop, you will interact with the following components:
 
