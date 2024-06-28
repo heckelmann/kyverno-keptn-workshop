@@ -2,22 +2,22 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "2"
-  name: keptn-monitoring
+    argocd.argoproj.io/sync-wave: "3"
+  name: flagd
   namespace: argocd
 spec:
   source:
-    repoURL: 'https://github.com/heckelmann/kyverno-keptn-workshop.git'
-    targetRevision: main
-    path: "gitops/infrastructure/keptn-monitoring"
+    path: "gitops/infrastructure/flagd"
+    repoURL: {{ .Values.repo.url }}
+    targetRevision: {{ .Values.repo.revision }}
   destination:
-    namespace: monitoring
+    namespace: flagd
     server: 'https://kubernetes.default.svc'
   project: default
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
+      selfHeal: true  
     retry:
       limit: 5
       backoff:

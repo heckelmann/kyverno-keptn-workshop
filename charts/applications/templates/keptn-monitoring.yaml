@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
-  name: jaeger
+    argocd.argoproj.io/sync-wave: "2"
+  name: keptn-monitoring
   namespace: argocd
 spec:
   source:
-    repoURL: 'https://github.com/heckelmann/kyverno-keptn-workshop.git'
-    targetRevision: main
-    path: "gitops/infrastructure/jaeger-operator"
+    path: "gitops/infrastructure/keptn-monitoring"
+    repoURL: {{ .Values.repo.url }}
+    targetRevision: {{ .Values.repo.revision }}
   destination:
-    namespace: observability
+    namespace: monitoring
     server: 'https://kubernetes.default.svc'
   project: default
   syncPolicy:

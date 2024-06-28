@@ -1,27 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-app-dev
+  name: demo-app-prod
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "10"  
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/heckelmann/kyverno-keptn-workshop.git'
-    path: "gitops/dev/demo-app"
-    targetRevision: main
+    path: "gitops/prod/demo-app"
+    repoURL: {{ .Values.repo.url }}
+    targetRevision: {{ .Values.repo.revision }}
     helm:
       parameters:
         - name: "commitID" 
           value: "$ARGOCD_APP_REVISION"
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: demo-app-dev
+    namespace: demo-app-prod
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-      

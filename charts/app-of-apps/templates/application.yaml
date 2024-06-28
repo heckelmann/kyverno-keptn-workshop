@@ -5,9 +5,14 @@ metadata:
   namespace: argocd
 spec:
   source:
-    path: gitops/applications
+    path: charts/applications
     repoURL: {{ .Values.repo.url }}
     targetRevision: {{ .Values.repo.revision }}
+    helm:
+      values: |
+        repo:
+          url: {{ .Values.repo.url }}
+          revision: {{ .Values.repo.revision }}
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc

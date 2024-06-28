@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
-  name: kyverno-policies
+    argocd.argoproj.io/sync-wave: "1"
+  name: jaeger
   namespace: argocd
 spec:
   source:
-    repoURL: 'https://github.com/heckelmann/kyverno-keptn-workshop.git'
-    targetRevision: main
-    path: "gitops/infrastructure/kyverno-policies"
+    path: "gitops/infrastructure/jaeger-operator"
+    repoURL: {{ .Values.repo.url }}
+    targetRevision: {{ .Values.repo.revision }}
   destination:
-    namespace: kyverno
+    namespace: observability
     server: 'https://kubernetes.default.svc'
   project: default
   syncPolicy:
@@ -26,5 +26,3 @@ spec:
         factor: 2
     syncOptions:
       - CreateNamespace=true
-      - Replace=true
-      - Force=true
