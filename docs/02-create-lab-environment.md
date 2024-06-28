@@ -4,7 +4,7 @@
 
 Go to https://github.com/heckelmann/kyverno-keptn-workshop and fork the repository to your personal GitHub account.
 
-Make sure the forked repository visability is set to `Public`.
+Make sure the forked repository visibility is set to `Public`.
 
 ![Fork Repository](assets/02-fork-repository.png)
 
@@ -15,42 +15,22 @@ In your fork, go to "Code" then switch to the "Codespaces" tab and click "Create
 
 ![Fork Repository](assets/02-create-codespace.png)
 
-A new Window will open with the Codespace. This will take a few minutes to start.
+A new window will open with the Codespace. This will take a few minutes to start.
 
 ## Change Application Path
 
 To point ArgoCD and Keptn Tasks to your repository, select the gitops folder and search and replace the following:
 
-- `https://github.com/heckelmann/kyverno-keptn-workshop.git` with your Repository URL.
 - `https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop` with your Repository URL for raw content.
 
 ![Find and Replace](assets/02-find-and-replace.png)
-
-## Create GitHub API Token and K8s Secret
-
-Open the GitHub settings and navigate to `Developer settings` -> `Personal access tokens` -> `Fine-grained tokens` (https://github.com/settings/tokens?type=beta).
-
-Select access only to your forked repository and set the permission on `Actions` to `read` and `write` access.
-
-Note down the generated token.
-
-![Fork Repository](assets/02-create-token.png)
-
-Switch back to your Codespace and create a Kubernetes secret with the token:
-
-```bash
-GH_REPO_OWNER=<YOUR_GITHUB_USER>
-GH_REPO=<YOUR_GITHUB_REPO>
-GH_API_TOKEN=<YOUR_GITHUB_TOKEN>
-kubectl create secret generic github-token -n demo-app-dev --from-literal=SECURE_DATA="{\"githubRepo\":\"${GH_REPO}\",\"githubRepoOwner\":\"${GH_REPO_OWNER}\",\"apiToken\":\"${GH_API_TOKEN}\"}"
-```
 
 ## Start the Workshop Kubernetes Cluster
 
 Open a new Terminal within your Codespace and run the following command:
 
 ```bash
-> make create
+> make
 Creating KinD cluster
 Creating cluster "workshop-cluster" ...
  ✓ Ensuring node image (kindest/node:v1.30.0) 🖼 
@@ -70,9 +50,9 @@ YOURPASSWORD
 🎉 Installation Complete! 🎉
 ```
 
-This will spin up a KinD Cluster within your Codespace, install ArgoCD and add create the `app-of-apps` application, which will deploy all other components.
+This will spin up a KinD Cluster within your Codespace, install ArgoCD and create the `app-of-apps` application, which will deploy all other components.
 
-*Pleate note the ArgoCD Admin Password, which will be displayed at the end of the installation.* 
+*Please note the ArgoCD Admin Password, which will be displayed at the end of the installation.* 
 
 You can now access ArgoCD by clicking on the exposed port of your GitHub Code Space
 
@@ -81,3 +61,23 @@ You can now access ArgoCD by clicking on the exposed port of your GitHub Code Sp
 After logging in with the `admin` user and the password displayed during the installation, you will see the ArgoCD Web Console.
 
 ![Access ArgoCD Web](assets/02-argocd-web-console.png)
+
+## Create GitHub API Token and K8s Secret
+
+Open the GitHub settings and navigate to `Developer settings` -> `Personal access tokens` -> `Fine-grained tokens` (https://github.com/settings/tokens?type=beta).
+
+Select access only to your forked repository and set the permission on `Actions` to `read` and `write` access.
+
+Note down the generated token.
+
+![Fork Repository](assets/02-create-token.png)
+
+Switch back to your Codespace and create a Kubernetes secret with the token:
+
+```bash
+GH_REPO_OWNER=<YOUR_GITHUB_USER>
+GH_REPO=<YOUR_GITHUB_REPO>
+GH_API_TOKEN=<YOUR_GITHUB_TOKEN>
+kubectl create secret generic github-token -n demo-app-dev \
+    --from-literal=SECURE_DATA="{\"githubRepo\":\"${GH_REPO}\",\"githubRepoOwner\":\"${GH_REPO_OWNER}\",\"apiToken\":\"${GH_API_TOKEN}\"}"
+```

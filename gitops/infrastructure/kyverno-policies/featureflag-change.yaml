@@ -39,7 +39,4 @@ spec:
                   imagePullPolicy: IfNotPresent
                   name: load-test
                 restartPolicy: OnFailure
-            ttlSecondsAfterFinished: 300          
-
-
-               
+            ttlSecondsAfterFinished: 300

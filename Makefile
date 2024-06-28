@@ -1,10 +1,8 @@
+.DEFAULT_GOAL           := ready
 GITHUB_REPOSITORY       ?= heckelmann/kyverno-keptn-workshop
 CLUSTER_NAME            ?= workshop-cluster
 
-.PHONY: help all create
-
-all: ## Create a Kind cluster and wait argocd is ready
-all: ready
+.PHONY: create delete ready help
 
 create: ## Create a Kind cluster
 	@echo "Creating KinD cluster"
@@ -20,7 +18,7 @@ create: ## Create a Kind cluster
 	@echo "Restart ArgoCD server..."
 	@kubectl -n argocd rollout restart deploy/argocd-server
 	@kubectl -n argocd rollout status deploy/argocd-server --timeout=300s
-	@helm install -n argocd app-of-apps ./charts/app-of-apps --set repo.url=https://github.com/$(GITHUB_REPOSITORY).git
+	@helm upgrade --install --wait -n argocd app-of-apps ./charts/app-of-apps --set repo.url=https://github.com/$(GITHUB_REPOSITORY).git
 	@echo "ArgoCD Admin Password"
 	@kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 	@echo ""
