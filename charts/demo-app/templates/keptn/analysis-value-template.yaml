@@ -1,0 +1,12 @@
+apiVersion: metrics.keptn.sh/v1
+kind: AnalysisValueTemplate
+metadata:
+  name: request-duration
+spec:
+  provider:
+    name: prometheus
+  query: |
+    sum by (path) (
+      rate(http_request_duration_seconds_sum{namespace='{{ .Release.Namespace }}', path='/'}[1m]) /
+      rate(http_request_duration_seconds_count{namespace='{{ .Release.Namespace }}', path='/'}[1m])
+    )

@@ -8,10 +8,13 @@ metadata:
 spec:
   project: default
   source:
-    path: gitops/prod/demo-app
+    path: charts/demo-app
     repoURL: {{ .Values.repo.url }}
     targetRevision: {{ .Values.repo.revision }}
     helm:
+      valuesObject:
+        service:
+          nodePort: 30105
       parameters:
         - name: commitID
           value: $ARGOCD_APP_REVISION
@@ -22,5 +25,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true

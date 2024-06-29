@@ -1,0 +1,20 @@
+# apiVersion: metrics.keptn.sh/v1
+# kind: AnalysisDefinition
+# metadata:
+#   name: demo-app-analysis
+# spec:
+#   objectives:
+#   - analysisValueTemplateRef:
+#       name: request-duration
+#     target:
+#       failure:
+#         greaterThan:
+#           fixedValue: 3
+#       warning:
+#         greaterThan:
+#           fixedValue: 2
+#     weight: 1
+#     keyObjective: true
+#   totalScore:
+#     passPercentage: 90
+#     warningPercentage: 75
