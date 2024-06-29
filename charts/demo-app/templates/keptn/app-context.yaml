@@ -1,0 +1,15 @@
+apiVersion: lifecycle.keptn.sh/v1
+kind: KeptnAppContext
+metadata:
+  name: demo-app
+spec:
+  preDeploymentTasks:
+    # - maintenance-window-check
+  postDeploymentTasks:
+    # - load-test
+  postDeploymentEvaluations:
+    # - demoapp-heatlh-check
+  promotionTasks:
+    # - promote
+  metadata:
+    commitID: {{ .Values.commitID }}

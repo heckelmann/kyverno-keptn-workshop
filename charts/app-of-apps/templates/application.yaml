@@ -9,7 +9,7 @@ spec:
     repoURL: {{ .Values.repo.url }}
     targetRevision: {{ .Values.repo.revision }}
     helm:
-      values: |
+      valuesObject:
         repo:
           url: {{ .Values.repo.url }}
           revision: {{ .Values.repo.revision }}

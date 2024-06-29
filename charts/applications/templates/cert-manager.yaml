@@ -11,7 +11,7 @@ spec:
     chart: cert-manager
     targetRevision: '*'
     helm:
-      values: |
+      valuesObject:
         installCRDs: true
   destination:
     namespace: cert-manager
