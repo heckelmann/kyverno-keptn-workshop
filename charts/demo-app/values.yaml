@@ -2,3 +2,6 @@ serviceVersion: v1
 commitID: ''
 service:
   nodePort: 30103
+repo:
+  name: heckelmann/kyverno-keptn-workshop
+  revision: main

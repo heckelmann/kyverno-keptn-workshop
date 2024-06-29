@@ -1,6 +1,7 @@
 import requests
+import sys
 
-url = "https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/functions/maintenance.json"
+url = sys.argv[1]
 expected_json = {'Maintenance': False}
 
 response = requests.get(url)
