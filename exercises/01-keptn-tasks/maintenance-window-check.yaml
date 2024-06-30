@@ -9,5 +9,5 @@ spec:
     httpRef: 
       url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/functions/checkmaintenance.py
     parameters:
-      array:
-      - https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/data/maintenance.json
+      map:
+        url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/data/maintenance.json

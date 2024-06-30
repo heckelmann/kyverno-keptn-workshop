@@ -1,7 +1,10 @@
 import requests
-import sys
+import os
+import yaml
 
-url = sys.argv[1]
+data = os.getenv('DATA')
+dct = yaml.safe_load(data)
+url = dct['url']
 expected_json = {'Maintenance': False}
 
 response = requests.get(url)
