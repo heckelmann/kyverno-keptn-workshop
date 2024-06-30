@@ -64,7 +64,7 @@ spec:
   timeout: "5m"
   python:
     httpRef: 
-      url: 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/functions/checkmaintenance.py'
+      url: 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/tasks/checkmaintenance.py'
 ```
 
 To assign this KeptnTask to a KeptnApp, you need to add it to the `KeptnAppContext`, as shown in the example above.

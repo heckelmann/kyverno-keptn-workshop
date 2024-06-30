@@ -12,4 +12,4 @@ spec:
     command:
       - 'k6'
       - 'run'
-      - 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/functions/load-dev.js'
+      - 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/tasks/load-dev.js'

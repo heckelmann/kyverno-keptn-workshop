@@ -10,7 +10,7 @@ We will run a K6 Load Test as Post-Deployment Task to generate load on the appli
 
 See `gitops/dev/demo-app-dev/templates/podmonitor.yaml` for the Prometheus PodMonitor configuration.
 
-## Excercise
+## Exercise
 
 ### Create a keptnMetricsProvider
 
@@ -89,7 +89,7 @@ spec:
     command:
       - 'k6'
       - 'run'
-      - 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/functions/load-dev.js'
+      - 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/tasks/load-dev.js'
 ```
 
 This TaskDefinition differs from the pre-deployment task we created before by not using the built-in function runtimes, but instead running a container with the k6 image. The k6 image is a popular tool for load testing and can be used to generate load on the application.

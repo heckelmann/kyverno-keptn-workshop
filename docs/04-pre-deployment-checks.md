@@ -8,11 +8,11 @@ These Tasks could be executed before or after your Pod is scheduled on the Kuber
 
 A full documentation of KeptnTasks can be found [here](https://keptn.sh/stable/docs/guides/tasks/).
 
-## Excercise
+## Exercise
 
 In this exercise, you will create a KeptnTask that checks if a maintenance window is open for your application.
 
-We will use the already existing python script `checkmaintenance.py` that is stored in the `functions` folder of this repository and execute it as a KeptnTask.
+We will use the already existing Python script `checkmaintenance.py` that is stored in the `tasks` folder of this repository and execute it as a KeptnTask.
 
 ### Create KeptnTaskDefinition
 
@@ -29,10 +29,10 @@ spec:
   timeout: "5m"
   python:
     httpRef: 
-      url: 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/functions/checkmaintenance.py'
+      url: 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/tasks/checkmaintenance.py'
 ```
 
-This KeptnTaskDefinition defines a task that retries 3 times with a timeout of 5 minutes. The task is executed by a python script that is stored in the `functions` folder of this repository.
+This KeptnTaskDefinition defines a task that retries 3 times with a timeout of 5 minutes. The task is executed by a Python script that is stored in the `tasks` folder of this repository.
 
 ### Assign Task to KeptnApp
 

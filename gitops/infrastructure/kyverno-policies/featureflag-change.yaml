@@ -34,7 +34,7 @@ spec:
                 - command:
                   - k6
                   - run
-                  - https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/functions/load-prod.js
+                  - https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/tasks/load-prod.js
                   image: grafana/k6:0.45.0
                   imagePullPolicy: IfNotPresent
                   name: load-test
