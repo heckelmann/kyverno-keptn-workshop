@@ -4,4 +4,4 @@ metadata:
   name: prometheus
 spec:
   type: prometheus
-  targetServer: "http://prometheus-operated.monitoring.svc.cluster.local:9090"
+  targetServer: http://prometheus-operated.monitoring.svc.cluster.local:9090

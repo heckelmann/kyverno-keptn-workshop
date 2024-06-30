@@ -13,6 +13,10 @@ spec:
     targetRevision: {{ .Values.repo.revision }}
     helm:
       valuesObject:
+        serviceVersion: v3
+        repo:
+          name: {{ .Values.repo.name }}
+          revision: {{ .Values.repo.revision }}
         service:
           nodePort: 30105
       parameters:
