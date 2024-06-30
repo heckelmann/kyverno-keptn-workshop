@@ -8,23 +8,22 @@ We will run a K6 Load Test as a post-deployment task to generate load on the app
     
     Please note that the evaluation of the performance is based on a simple example and should be adapted to your specific use case.
 
-See `gitops/dev/demo-app-dev/templates/podmonitor.yaml` for the Prometheus PodMonitor configuration.
+See `charts/demo-app/templates/podmonitor.yaml` for the Prometheus PodMonitor configuration.
 
 ## Exercise
 
 ### Create a keptnMetricsProvider
 
-Create a new file `metrics-provider.yaml` in the `gitops/dev/demo-app-dev/templates` folder of your repository and add the following content:
+Create a new file `metrics-provider.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
 
 ```yaml
 apiVersion: metrics.keptn.sh/v1alpha3
 kind: KeptnMetricsProvider
 metadata:
   name: prometheus
-  namespace: demo-app-dev
 spec:
   type: prometheus
-  targetServer: "http://prometheus-operated.monitoring.svc.cluster.local:9090"
+  targetServer: http://prometheus-operated.monitoring.svc.cluster.local:9090
 ```
 
 The metrics provider is used to define the data source for the metrics that are used in the evaluation. The Datasource could be Prometheus, Thanos, Cortex, Dynatrace, or Datadog.
@@ -33,14 +32,13 @@ See [KeptnMetricsProvider](https://keptn.sh/stable/docs/reference/crd-reference/
 
 ### Create a KeptnMetric
 
-Create a new file `keptn-metric.yaml` in the `gitops/dev/demo-app-dev/templates` folder of your repository and add the following content:
+Create a new file `keptn-metric.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
 
 ```yaml
 apiVersion: metrics.keptn.sh/v1alpha3
 kind: KeptnMetric
 metadata:
   name: demoapp-latency
-  namespace: demo-app-dev
 spec:
   provider:
     name: prometheus
@@ -52,19 +50,18 @@ The metric is used to define the query that is used to fetch the data from the d
 
 ### Create a KeptnEvaluationDefinition
 
-Create a new file `evaluation-definition.yaml` in the `gitops/dev/demo-app-dev/templates` folder of your repository and add the following content:
+Create a new file `evaluation-definition.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
 
 ```yaml
 apiVersion: lifecycle.keptn.sh/v1alpha3
 kind: KeptnEvaluationDefinition
 metadata:
   name: demoapp-heatlh-check
-  namespace: demo-app-dev
 spec:
   objectives:
     - keptnMetricRef:
         name: demoapp-latency
-        namespace: demo-app-dev
+        namespace: {{ .Release.Namespace }}
       evaluationTarget: "<1" #less than 1s
 ```
 
@@ -72,17 +69,16 @@ The evaluation definition is used to define the objectives that need to be met f
 
 ### Create a Load Test Task
 
-Create a new file `load-test-task.yaml` in the `gitops/dev/demo-app-dev/templates` folder of your repository and add the following content:
+Create a new file `load-test-task.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
 
 ```yaml
 apiVersion: lifecycle.keptn.sh/v1alpha3
 kind: KeptnTaskDefinition
 metadata:
   name: load-test
-  namespace: demo-app-dev
 spec:
   retries: 0
-  timeout: "5m"
+  timeout: 5m
   container:
     name: k6-test
     image: grafana/k6:0.45.0
@@ -96,14 +92,13 @@ This TaskDefinition differs from the pre-deployment task we created before by no
 
 ### Create a Promotion Task
 
-Create a new file `promotion-task.yaml` in the `gitops/dev/demo-app-dev/templates` folder of your repository and add the following content:
+Create a new file `promotion-task.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
 
 ```yaml
 apiVersion: lifecycle.keptn.sh/v1
 kind: KeptnTaskDefinition
 metadata:
   name: promote
-  namespace: demo-app-dev
 spec:
   container:
     name: promote
@@ -122,17 +117,17 @@ The promotion task is used to promote the deployment to a different environment.
 
 Please note that we are using the secret which has been created in a previous step to authenticate with GitHub.
 
-
 ### Update the KeptnAppContext
 
-Add the following to your `KeptnAppContext` in the `gitops/dev/demo-app-dev/templates/keptn.yaml`:
+TODO: update this
+
+Add the following to your `KeptnAppContext` in the `charts/demo-app/templates/keptn.yaml`:
 
 ```yaml
 apiVersion: lifecycle.keptn.sh/v1
 kind: KeptnAppContext
 metadata:
   name: demo-app
-  namespace: demo-app-dev
 spec:
   postDeploymentTasks:
     - load-test
