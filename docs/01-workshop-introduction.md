@@ -27,4 +27,3 @@ Your workshop cluster will include the following pre-configured components:
 - [Jaeger Operator](https://github.com/jaegertracing/jaeger-operator)
 - [Prometheus/Grafana Stack](https://prometheus-operator.dev/)
 - [Cert-Manager](https://cert-manager.io/)
-

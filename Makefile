@@ -35,8 +35,6 @@ delete: ## Delete Kind cluster
 ready: ## Wait argocd is ready
 ready: create
 	@kubectl wait --for=condition=available deployment/argocd-server -n argocd --timeout=300s
-	@echo "ArgoCD Admin Password"
-	@kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 
 help: ## Shows the available commands
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-40s\033[0m %s\n", $$1, $$2}'
