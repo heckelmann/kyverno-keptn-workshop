@@ -26,10 +26,10 @@ metadata:
   namespace: demo-app-dev
 spec:
   retries: 3
-  timeout: "5m"
+  timeout: 5m
   python:
     httpRef: 
-      url: 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/tasks/checkmaintenance.py'
+      url: 'https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/checkmaintenance.py'
 ```
 
 This KeptnTaskDefinition defines a task that retries 3 times with a timeout of 5 minutes. The task is executed by a Python script that is stored in the `tasks` folder of this repository.

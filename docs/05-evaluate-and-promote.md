@@ -87,9 +87,9 @@ spec:
     name: k6-test
     image: grafana/k6:0.45.0
     command:
-      - 'k6'
-      - 'run'
-      - 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/tasks/load-dev.js'
+      - k6
+      - run
+      - https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/load-dev.js
 ```
 
 This TaskDefinition differs from the pre-deployment task we created before by not using the built-in function runtimes, but instead running a container with the k6 image. The k6 image is a popular tool for load testing and can be used to generate load on the application.

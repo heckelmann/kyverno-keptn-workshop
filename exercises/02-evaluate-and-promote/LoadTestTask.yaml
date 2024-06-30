@@ -5,11 +5,11 @@ metadata:
   namespace: demo-app-dev
 spec:
   retries: 0
-  timeout: "5m"
+  timeout: 5m
   container:
     name: k6-test
     image: grafana/k6:0.45.0
     command:
-      - 'k6'
-      - 'run'
-      - 'https://raw.githubusercontent.com/heckelmann/kyverno-keptn-workshop/main/tasks/load-dev.js'
+      - k6
+      - run
+      - https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/load-dev.js

@@ -1,8 +1,13 @@
 site_name: "Kyverno Keptn Workshop"
+repo_url: https://github.com/heckelmann/kyverno-keptn-workshop
+repo_name: heckelmann/kyverno-keptn-workshop
+edit_uri: edit/main/web-docs/
+docs_dir: docs
+
 theme:
   name: material
   palette: 
-      # Palette toggle for light mode
+    # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: light blue
@@ -10,7 +15,6 @@ theme:
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
@@ -27,14 +31,6 @@ theme:
   font: 
     text: Exo 2
     code: Roboto Mono
-
-docs_dir: docs
-# Powers the GitHub links in top bar
-repo_url: https://github.com/heckelmann/kyverno-keptn-workshop
-repo_name: heckelmann/kyverno-keptn-workshop
-
-# Something?
-edit_uri: edit/main/web-docs/
 
 nav:
   - 'Home': 'index.md'
