@@ -10,4 +10,4 @@ spec:
       url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/functions/checkmaintenance.py
     parameters:
       array:
-      - https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/functions/maintenance.json
+      - https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/data/maintenance.json
