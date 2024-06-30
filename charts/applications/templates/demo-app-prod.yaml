@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     path: charts/demo-app
-    repoURL: {{ .Values.repo.url }}
+    repoURL: https://github.com/{{ .Values.repo.name }}
     targetRevision: {{ .Values.repo.revision }}
     helm:
       valuesObject:

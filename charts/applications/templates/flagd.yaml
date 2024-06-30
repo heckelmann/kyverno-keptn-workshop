@@ -8,7 +8,7 @@ metadata:
 spec:
   source:
     path: gitops/infrastructure/flagd
-    repoURL: {{ .Values.repo.url }}
+    repoURL: https://github.com/{{ .Values.repo.name }}
     targetRevision: {{ .Values.repo.revision }}
   destination:
     namespace: flagd

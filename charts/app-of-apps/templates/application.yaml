@@ -6,12 +6,12 @@ metadata:
 spec:
   source:
     path: charts/applications
-    repoURL: {{ .Values.repo.url }}
+    repoURL: https://github.com/{{ .Values.repo.name }}
     targetRevision: {{ .Values.repo.revision }}
     helm:
       valuesObject:
         repo:
-          url: {{ .Values.repo.url }}
+          name: {{ .Values.repo.name }}
           revision: {{ .Values.repo.revision }}
   destination:
     namespace: argocd

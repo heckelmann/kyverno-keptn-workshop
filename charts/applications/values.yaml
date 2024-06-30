@@ -1,3 +1,3 @@
 repo:
-  url: https://github.com/heckelmann/kyverno-keptn-workshop.git
+  name: heckelmann/kyverno-keptn-workshop
   revision: main

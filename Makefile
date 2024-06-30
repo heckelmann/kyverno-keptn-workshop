@@ -18,7 +18,7 @@ create: ## Create a Kind cluster
 	@echo "Restart ArgoCD server..."
 	@kubectl -n argocd rollout restart deploy/argocd-server
 	@kubectl -n argocd rollout status deploy/argocd-server --timeout=300s
-	@helm upgrade --install --wait -n argocd app-of-apps ./charts/app-of-apps --set repo.url=https://github.com/$(GITHUB_REPOSITORY).git
+	@helm upgrade --install --wait -n argocd app-of-apps ./charts/app-of-apps --set repo.name=$(GITHUB_REPOSITORY)
 	@echo "ArgoCD Admin Password"
 	@kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 	@echo ""
