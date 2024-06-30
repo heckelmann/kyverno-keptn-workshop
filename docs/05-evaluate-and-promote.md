@@ -2,7 +2,7 @@
 
 You will learn how to prevent the promotion of a new version of your application if the KeptnEvaluation fails and how to use the promotion task to promote the deployment to the next environment.
 
-We will run a K6 Load Test as Post-Deployment Task to generate load on the application and calculate the average latency. After we will analyze the results and promote the deployment to the production environment if the evaluation passes.
+We will run a K6 Load Test as a post-deployment task to generate load on the application and calculate the average latency. After we will analyze the results and promote the deployment to the production environment if the evaluation passes.
 
 !!! note
     
@@ -31,7 +31,7 @@ The metrics provider is used to define the data source for the metrics that are 
 
 See [KeptnMetricsProvider](https://keptn.sh/stable/docs/reference/crd-reference/metric/) for more information.
 
-### Create a keptnMetric
+### Create a KeptnMetric
 
 Create a new file `keptn-metric.yaml` in the `gitops/dev/demo-app-dev/templates` folder of your repository and add the following content:
 

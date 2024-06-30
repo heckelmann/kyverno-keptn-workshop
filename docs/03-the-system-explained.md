@@ -51,7 +51,7 @@ spec:
 
 A [KeptnTaskDefinition](https://keptn.sh/stable/docs/reference/crd-reference/taskdefinition/) defines tasks that Keptn runs as part of the pre- and post-deployment phases of a KeptnApp or KeptnWorkload.
 
-A `KeptnTask` could be executed on each Workload or on [Application](#keptnappcontext) Level.
+A `KeptnTask` could be executed on each Workload or at the [Application](#keptnappcontext) Level.
 
 ```yaml
 apiVersion: lifecycle.keptn.sh/v1alpha3
@@ -78,7 +78,7 @@ keptn.sh/post-deployment-tasks: <task-name>
 
 ## KeptnEvaluationDefinition
 
-A [KeptnEvaluationDefinition](https://keptn.sh/stable/docs/reference/crd-reference/evaluationdefinition/) assigns target values to KeptnMetric queries. These are used as part of evaluation tasks that Keptn runs as part of pre- and post-analysis phases of a KeptnApp or workload.
+A [KeptnEvaluationDefinition](https://keptn.sh/stable/docs/reference/crd-reference/evaluationdefinition/) assigns target values to KeptnMetric queries. These are used as part of evaluation tasks that Keptn runs as part of the pre-analysis and post-analysis phases of a KeptnApp or workload.
 
 ```yaml
 apiVersion: lifecycle.keptn.sh/v1alpha3
