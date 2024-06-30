@@ -7,7 +7,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    path: gitops/infrastructure/keptn-monitoring
+    path: infrastructure/keptn-monitoring
     repoURL: https://github.com/{{ .Values.repo.name }}
     targetRevision: {{ .Values.repo.revision }}
   destination:

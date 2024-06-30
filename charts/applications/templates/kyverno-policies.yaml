@@ -7,7 +7,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    path: gitops/infrastructure/kyverno-policies
+    path: infrastructure/kyverno-policies
     repoURL: https://github.com/{{ .Values.repo.name }}
     targetRevision: {{ .Values.repo.revision }}
   destination:

@@ -12,7 +12,7 @@ spec:
       chart: kyverno
     - repoURL: https://github.com/{{ .Values.repo.name }}
       targetRevision: {{ .Values.repo.revision }}
-      path: gitops/infrastructure/permissions
+      path: infrastructure/permissions
   destination:
     namespace: kyverno
     server: https://kubernetes.default.svc

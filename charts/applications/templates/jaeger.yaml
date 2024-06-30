@@ -7,7 +7,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    path: gitops/infrastructure/jaeger-operator
+    path: infrastructure/jaeger-operator
     repoURL: https://github.com/{{ .Values.repo.name }}
     targetRevision: {{ .Values.repo.revision }}
   destination:
