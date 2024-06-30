@@ -4,12 +4,20 @@ metadata:
   name: demo-app
 spec:
   preDeploymentTasks:
-    # - maintenance-window-check
+  {{- range .Values.keptn.appContext.preDeploymentTasks }}
+  - {{ . }}
+  {{- end }}
   postDeploymentTasks:
-    # - load-test
+  {{- range .Values.keptn.appContext.postDeploymentTasks }}
+  - {{ . }}
+  {{- end }}
   postDeploymentEvaluations:
-    # - demoapp-heatlh-check
+  {{- range .Values.keptn.appContext.postDeploymentEvaluations }}
+  - {{ . }}
+  {{- end }}
   promotionTasks:
-    # - promote
+  {{- range .Values.keptn.appContext.promotionTasks }}
+  - {{ . }}
+  {{- end }}
   metadata:
     commitID: {{ .Values.commitID }}

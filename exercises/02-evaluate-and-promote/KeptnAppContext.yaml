@@ -14,4 +14,3 @@ spec:
     - promote
   metadata:
     commitID: {{.Values.commitID}}
-    

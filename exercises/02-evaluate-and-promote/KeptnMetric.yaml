@@ -8,4 +8,3 @@ spec:
     name: prometheus
   query: 'sum by (path) (rate(http_request_duration_seconds_sum{namespace="demo-app-dev", path="/"}[2m]) / rate(http_request_duration_seconds_count{namespace="demo-app-dev", path="/"}[2m]))'
   fetchIntervalSeconds: 5
-  
