@@ -18,6 +18,10 @@ spec:
           revision: {{ .Values.repo.revision }}
         service:
           nodePort: 30103
+        keptn:
+          appContext:
+            preDeploymentTasks:
+              - maintenance-window-check
       valueFiles:
         - ../../gitops/dev/demo-app/values.yaml
       parameters:
