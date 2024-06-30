@@ -16,10 +16,9 @@ spec:
         repo:
           name: {{ .Values.repo.name }}
           revision: {{ .Values.repo.revision }}
-        service:
-          nodePort: 30105
       valueFiles:
         - ../../gitops/prod/demo-app/values.yaml
+        - ../../gitops/prod/demo-app/values-specific.yaml
       parameters:
         - name: commitID
           value: $ARGOCD_APP_REVISION

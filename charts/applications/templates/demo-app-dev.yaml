@@ -20,6 +20,7 @@ spec:
           nodePort: 30103
       valueFiles:
         - ../../gitops/dev/demo-app/values.yaml
+        - ../../gitops/dev/demo-app/values-specific.yaml
       parameters:
         - name: commitID
           value: $ARGOCD_APP_REVISION
