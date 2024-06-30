@@ -7,18 +7,18 @@ RUN curl -sSL -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s 
 # Install Helm
 RUN curl -s https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash -
 
-# Install kind
-#RUN KIND_RELEASE=$(curl --silent "https://api.github.com/repos/kubernetes-sigs/kind/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') \
-#    && curl -sSL -o /usr/local/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/$KIND_RELEASE/kind-linux-amd64 \
-#    && chmod +x /usr/local/bin/kind
-
 # Install k9s
 RUN curl -sSL -o /tmp/k9s.tar.gz https://github.com/derailed/k9s/releases/download/v0.32.4/k9s_Linux_amd64.tar.gz \
     && tar -xzf /tmp/k9s.tar.gz -C /tmp \
     && mv /tmp/k9s /usr/local/bin/k9s \
     && chmod +x /usr/local/bin/k9s
 
-
 # Install ArgoCD CLI
 RUN curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 && \
     chmod +x /usr/local/bin/argocd
+
+# Install Kyverno chainsaw
+RUN curl -sSL -o /tmp/chainsaw.tar.gz https://github.com/kyverno/chainsaw/releases/latest/download/chainsaw_linux_amd64.tar.gz \
+    && tar -xzf /tmp/chainsaw.tar.gz -C /tmp \
+    && mv /tmp/chainsaw /usr/local/bin/chainsaw \
+    && chmod +x /usr/local/bin/chainsaw

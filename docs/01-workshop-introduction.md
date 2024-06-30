@@ -16,6 +16,7 @@ Your Dev environment has multiple tools preconfigured such as:
 - K9s (Kubernetes CLI)
 - kubectl
 - ArgoCD CLI
+- Kyverno chainsaw
 
 Your workshop cluster will include the following pre-configured components:
 
