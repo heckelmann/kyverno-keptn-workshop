@@ -53,6 +53,7 @@ The metric is used to define the query that is used to fetch the data from the d
 Create a new file `evaluation-definition.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
 
 ```yaml
+{% raw %}
 apiVersion: lifecycle.keptn.sh/v1alpha3
 kind: KeptnEvaluationDefinition
 metadata:
@@ -61,8 +62,9 @@ spec:
   objectives:
     - keptnMetricRef:
         name: demoapp-latency
-        namespace: {% raw %}{{ .Release.Namespace }}{% endraw %}
+        namespace: {{ .Release.Namespace }}
       evaluationTarget: "<1" #less than 1s
+{% endraw %}
 ```
 
 The evaluation definition is used to define the objectives that need to be met for the evaluation to pass. In this case, we are checking if the average latency of the application is less than 1 second.
@@ -72,6 +74,7 @@ The evaluation definition is used to define the objectives that need to be met f
 Create a new file `load-test-task.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
 
 ```yaml
+{% raw %}
 apiVersion: lifecycle.keptn.sh/v1alpha3
 kind: KeptnTaskDefinition
 metadata:
@@ -85,7 +88,8 @@ spec:
     command:
       - k6
       - run
-      - {% raw %}https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/load-dev.js{% endraw %}
+      - https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/load-dev.js
+{% endraw %}
 ```
 
 This TaskDefinition differs from the pre-deployment task we created before by not using the built-in function runtimes, but instead running a container with the k6 image. The k6 image is a popular tool for load testing and can be used to generate load on the application.

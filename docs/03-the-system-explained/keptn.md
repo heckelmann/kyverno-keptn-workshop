@@ -50,6 +50,7 @@ A [KeptnTaskDefinition](https://keptn.sh/stable/docs/reference/crd-reference/tas
 A `KeptnTask` could be executed on each Workload or at the [Application](#keptnappcontext) Level.
 
 ```yaml
+{% raw %}
 apiVersion: lifecycle.keptn.sh/v1alpha3
 kind: KeptnTaskDefinition
 metadata:
@@ -60,7 +61,8 @@ spec:
   timeout: 5m
   python:
     httpRef: 
-      url: {% raw %}https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/checkmaintenance.py{% endraw %}
+      url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/checkmaintenance.py
+{% endraw %}
 ```
 
 To assign this KeptnTask to a KeptnApp, you need to add it to the `KeptnAppContext`, as shown in the example above.
@@ -127,6 +129,7 @@ spec:
 An [AnalysisValueTemplate](https://keptn.sh/stable/docs/reference/crd-reference/analysisvaluetemplate/) resource defines a Service Level Indicator (SLI), which identifies the data to be analyzed by a data source to use and the query to issue. One Analysis can use data from multiple AnalysisValueTemplates.
 
 ```yaml
+{% raw %}
 apiVersion: metrics.keptn.sh/v1
 kind: AnalysisValueTemplate
 metadata:
@@ -135,7 +138,8 @@ metadata:
 spec:
   provider:
     name: prometheus
-  query: {% raw %}"{{ printf "sum by (path) (rate(http_request_duration_seconds_sum{namespace='demo-app-prod', path='/'}[1m]) / rate(http_request_duration_seconds_count{path='/'}[1m]))" }}"{% endraw %}
+  query: "{{ printf "sum by (path) (rate(http_request_duration_seconds_sum{namespace='demo-app-prod', path='/'}[1m]) / rate(http_request_duration_seconds_count{path='/'}[1m]))" }}"
+{% endraw %}
 ```
 
 ## AnalysisDefinition
