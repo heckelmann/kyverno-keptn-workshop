@@ -14,7 +14,7 @@ See `charts/demo-app/templates/podmonitor.yaml` for the Prometheus PodMonitor co
 
 ### Create a keptnMetricsProvider
 
-Create a new file `metrics-provider.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
+Create a new file `metrics-provider.yaml` in the `charts/demo-app/templates/keptn` folder of your repository and add the following content:
 
 ```yaml
 apiVersion: metrics.keptn.sh/v1alpha3
@@ -32,7 +32,7 @@ See [KeptnMetricsProvider](https://keptn.sh/stable/docs/reference/crd-reference/
 
 ### Create a KeptnMetric
 
-Create a new file `keptn-metric.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
+Create a new file `keptn-metric.yaml` in the `charts/demo-app/templates/keptn` folder of your repository and add the following content:
 
 ```yaml
 apiVersion: metrics.keptn.sh/v1alpha3
@@ -50,7 +50,7 @@ The metric is used to define the query that is used to fetch the data from the d
 
 ### Create a KeptnEvaluationDefinition
 
-Create a new file `evaluation-definition.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
+Create a new file `evaluation-definition.yaml` in the `charts/demo-app/templates/keptn` folder of your repository and add the following content:
 
 ```yaml
 {% raw %}
@@ -71,7 +71,7 @@ The evaluation definition is used to define the objectives that need to be met f
 
 ### Create a Load Test Task
 
-Create a new file `load-test-task.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
+Create a new file `load-test-task.yaml` in the `charts/demo-app/templates/keptn` folder of your repository and add the following content:
 
 ```yaml
 {% raw %}
@@ -96,7 +96,7 @@ This TaskDefinition differs from the pre-deployment task we created before by no
 
 ### Create a Promotion Task
 
-Create a new file `promotion-task.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
+Create a new file `promotion-task.yaml` in the `charts/demo-app/templates/keptn` folder of your repository and add the following content:
 
 ```yaml
 apiVersion: lifecycle.keptn.sh/v1
@@ -123,24 +123,18 @@ Please note that we are using the secret which has been created in a previous st
 
 ### Update the KeptnAppContext
 
-TODO: update this
-
-Add the following to your `KeptnAppContext` in the `charts/demo-app/templates/keptn.yaml`:
+Edit the `gitops/dev/demo-app/values-specific.yaml` file as shown in the example below:
 
 ```yaml
-apiVersion: lifecycle.keptn.sh/v1
-kind: KeptnAppContext
-metadata:
-  name: demo-app
-spec:
-  postDeploymentTasks:
-    - load-test
-  postDeploymentEvaluations:
-    - demoapp-heatlh-check
-  promotionTasks:
-    - promote
+keptn:
+  appContext:
+    postDeploymentTasks:
+      - load-test
+    postDeploymentEvaluations:
+      - demoapp-heatlh-check
+    promotionTasks:
+      - promote
 ```
-
 
 ### Apply the changes
 
