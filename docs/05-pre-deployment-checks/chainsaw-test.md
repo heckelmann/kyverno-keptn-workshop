@@ -131,6 +131,7 @@ spec:
                 prune: true
                 selfHeal: true
     - assert:
+        timeout: 2m
         resource:
           apiVersion: lifecycle.keptn.sh/v1
           kind: KeptnTask
@@ -160,11 +161,12 @@ chainsaw test tests/05-pre-deployment-checks
 ```
 
 If the test succeeds you should see an output similar to:
+
 ```
 Version: 0.2.5
 Loading default configuration...
 - Using test file: chainsaw-test
-- TestDirs [./exercises/01-keptn-tasks/]
+- TestDirs [./tests/05-pre-deployment-checks]
 - SkipDelete false
 - FailFast false
 - ReportFormat ''
@@ -184,29 +186,39 @@ Loading default configuration...
 - NoCluster false
 - PauseOnFailure false
 Loading tests...
-- maintenance-window-check-dev (./exercises/01-keptn-tasks/)
+- maintenance-window-check (./tests/05-pre-deployment-checks)
 Loading values...
 Running tests...
 === RUN   chainsaw
 === PAUSE chainsaw
 === CONT  chainsaw
-=== RUN   chainsaw/maintenance-window-check-dev
-=== PAUSE chainsaw/maintenance-window-check-dev
-=== CONT  chainsaw/maintenance-window-check-dev
-    | 00:14:44 | maintenance-window-check-dev | step-1   | TRY       | RUN   |
-    | 00:14:44 | maintenance-window-check-dev | step-1   | DELETE    | RUN   | lifecycle.keptn.sh/v1/KeptnApp @ demo-app-dev/demo-app
-    | 00:14:45 | maintenance-window-check-dev | step-1   | DELETE    | OK    | lifecycle.keptn.sh/v1/KeptnApp @ demo-app-dev/demo-app
-    | 00:14:45 | maintenance-window-check-dev | step-1   | DELETE    | DONE  | lifecycle.keptn.sh/v1/KeptnApp @ demo-app-dev/demo-app
-    | 00:14:45 | maintenance-window-check-dev | step-1   | DELETE    | RUN   | apps/v1/Deployment @ demo-app-dev/demo-app
-    | 00:14:45 | maintenance-window-check-dev | step-1   | DELETE    | OK    | apps/v1/Deployment @ demo-app-dev/demo-app
-    | 00:14:45 | maintenance-window-check-dev | step-1   | DELETE    | DONE  | apps/v1/Deployment @ demo-app-dev/demo-app
-    | 00:14:45 | maintenance-window-check-dev | step-1   | ASSERT    | RUN   | lifecycle.keptn.sh/v1/KeptnApp @ demo-app-dev/demo-app
-    | 00:15:15 | maintenance-window-check-dev | step-1   | ASSERT    | DONE  | lifecycle.keptn.sh/v1/KeptnApp @ demo-app-dev/demo-app
-    | 00:15:15 | maintenance-window-check-dev | step-1   | ASSERT    | RUN   | lifecycle.keptn.sh/v1/KeptnTask @ demo-app-dev/*
-    | 00:15:25 | maintenance-window-check-dev | step-1   | ASSERT    | DONE  | lifecycle.keptn.sh/v1/KeptnTask @ demo-app-dev/*
-    | 00:15:25 | maintenance-window-check-dev | step-1   | TRY       | DONE  |
+=== RUN   chainsaw/maintenance-window-check
+=== PAUSE chainsaw/maintenance-window-check
+=== CONT  chainsaw/maintenance-window-check
+    | 08:45:48 | maintenance-window-check | @setup   | CREATE    | OK    | v1/Namespace @ chainsaw-moved-bream
+    | 08:45:48 | maintenance-window-check | step-1   | TRY       | RUN   |
+    | 08:45:48 | maintenance-window-check | step-1   | APPLY     | RUN   | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:45:48 | maintenance-window-check | step-1   | CREATE    | OK    | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:45:48 | maintenance-window-check | step-1   | APPLY     | DONE  | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:45:48 | maintenance-window-check | step-1   | ASSERT    | RUN   | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:46:50 | maintenance-window-check | step-1   | ASSERT    | DONE  | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:46:50 | maintenance-window-check | step-1   | ASSERT    | RUN   | lifecycle.keptn.sh/v1/KeptnApp @ chainsaw-moved-bream/demo-app
+    | 08:46:50 | maintenance-window-check | step-1   | ASSERT    | DONE  | lifecycle.keptn.sh/v1/KeptnApp @ chainsaw-moved-bream/demo-app
+    | 08:46:50 | maintenance-window-check | step-1   | APPLY     | RUN   | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:46:50 | maintenance-window-check | step-1   | PATCH     | OK    | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:46:50 | maintenance-window-check | step-1   | APPLY     | DONE  | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:46:50 | maintenance-window-check | step-1   | ASSERT    | RUN   | lifecycle.keptn.sh/v1/KeptnTask @ chainsaw-moved-bream/*
+    | 08:47:31 | maintenance-window-check | step-1   | ASSERT    | DONE  | lifecycle.keptn.sh/v1/KeptnTask @ chainsaw-moved-bream/*
+    | 08:47:31 | maintenance-window-check | step-1   | TRY       | DONE  |
+    | 08:47:31 | maintenance-window-check | step-1   | CLEANUP   | RUN   |
+    | 08:47:31 | maintenance-window-check | step-1   | DELETE    | RUN   | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:47:31 | maintenance-window-check | step-1   | DELETE    | OK    | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:47:37 | maintenance-window-check | step-1   | DELETE    | DONE  | argoproj.io/v1alpha1/Application @ argocd/demo-app-test
+    | 08:47:37 | maintenance-window-check | step-1   | CLEANUP   | DONE  |
+    | 08:47:37 | maintenance-window-check | @cleanup | DELETE    | RUN   | v1/Namespace @ chainsaw-moved-bream
+    | 08:47:37 | maintenance-window-check | @cleanup | DELETE    | DONE  | v1/Namespace @ chainsaw-moved-bream
 --- PASS: chainsaw (0.00s)
-    --- PASS: chainsaw/maintenance-window-check-dev (40.17s)
+    --- PASS: chainsaw/maintenance-window-check (108.74s)
 PASS
 Tests Summary...
 - Passed  tests 1

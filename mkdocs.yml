@@ -52,7 +52,7 @@ nav:
         - '5.1: Chainsaw test': 05-pre-deployment-checks/chainsaw-test.md
       - '6: Evaluate & Promote Deployments':
         - 06-evaluate-and-promote/index.md
-        - '6.1: Chainsaw test': 06-evaluate-and-promote/chainsaw-test.md
+        # - '6.1: Chainsaw test': 06-evaluate-and-promote/chainsaw-test.md
       - '7: Deployment Observability':
         - 07-deployment-observability/index.md
   - 'Final Exam': 'final-exam.md'
