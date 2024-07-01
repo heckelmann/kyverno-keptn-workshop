@@ -1,0 +1,27 @@
+name: Chainsaw
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Chainsaw tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup cluster
+        run: make
+
+      - name: Install chainsaw
+        uses: kyverno/action-install-chainsaw@v0.2.5
+
+      - name: Run chainsaw tests
+        run: chainsaw test ./tests/04-test-the-system
