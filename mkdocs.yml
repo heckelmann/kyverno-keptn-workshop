@@ -39,8 +39,9 @@ nav:
       - '2: Setup Lab Environment': '02-create-lab-environment.md'
       - '3: The System Explained': '03-the-system-explained.md'
       - '4: Pre Deployment Checks': '04-pre-deployment-checks.md'
-      - '5: Evaluate & Promote Deployments': '05-evaluate-and-promote.md'
-      - '6: Deployment Observability': '06-deployment-observability.md'
+      - '5: Chainsaw test': '05-chainsaw-test.md'
+      - '6: Evaluate & Promote Deployments': '06-evaluate-and-promote.md'
+      - '7: Deployment Observability': '07-deployment-observability.md'
   - 'Final Exam': 'final-exam.md'
 
 # pip install mkdocs-macros-plugin

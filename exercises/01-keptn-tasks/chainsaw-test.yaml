@@ -7,15 +7,23 @@ spec:
   namespace: demo-app-dev
   steps:
   - try:
+    - delete:
+        ref:
+          apiVersion: lifecycle.keptn.sh/v1
+          kind: KeptnApp
+          name: demo-app
+    - delete:
+        ref:
+          apiVersion: apps/v1
+          kind: Deployment
+          name: demo-app
     - assert:
+        timeout: 1m
         resource:
           apiVersion: lifecycle.keptn.sh/v1
           kind: KeptnApp
           metadata:
             name: demo-app
-    - script:
-        content: |
-          kubectl -n $NAMESPACE rollout restart deploy/demo-app
     - assert:
         resource:
           apiVersion: lifecycle.keptn.sh/v1
@@ -31,27 +39,3 @@ spec:
             taskDefinition: maintenance-window-check
           status:
             status: Succeeded
-    # - assert:
-    #     resource:
-    #       apiVersion: lifecycle.keptn.sh/v1
-    #       kind: KeptnApp
-    #       metadata:
-    #         name: demo-app
-    # - script:
-    #     content: |
-    #       helm template -n $NAMESPACE ../../../charts/demo-app --values ./values-1.yaml --values ./values-2.yaml | kubectl apply -n $NAMESPACE -f -
-    # - assert:
-    #     resource:
-    #       apiVersion: lifecycle.keptn.sh/v1
-    #       kind: KeptnTask
-    #       spec:
-    #         checkType: pre
-    #         context:
-    #           appName: demo-app
-    #           appVersion: v1
-    #           objectType: App
-    #           taskType: pre
-    #           workloadName: ""
-    #         taskDefinition: maintenance-window-check
-    #       status:
-    #         status: Succeeded
