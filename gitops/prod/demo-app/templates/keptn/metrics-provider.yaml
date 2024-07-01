@@ -1,8 +1,0 @@
-apiVersion: metrics.keptn.sh/v1alpha3
-kind: KeptnMetricsProvider
-metadata:
-  name: prometheus
-  namespace: demo-app-prod
-spec:
-  type: prometheus
-  targetServer: "http://prometheus-operated.monitoring.svc.cluster.local:9090"

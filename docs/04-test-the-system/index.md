@@ -120,9 +120,13 @@ Commit and push the changes to your repository and wait for the deployment to fi
 
 ### Open a pull request
 
-With the changes above, GitHub will execute the Chainsaw tests for every pull request. You can block pull request merges based on the test outcome.
+With the changes above, GitHub will execute the Chainsaw tests for every pull request.
 
-TODO: image
+![GitHub logs](action-logs.png)
+
+You can block pull request merges based on the test outcome.
+
+![All checks have passed](passed.png)
 
 ### Summary
 
