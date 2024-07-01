@@ -43,6 +43,7 @@ nav:
         - '3.1: Keptn': 03-the-system-explained/keptn.md
         - '3.2: Kyverno': 03-the-system-explained/kyverno.md
         - '3.3: Chainsaw': 03-the-system-explained/chainsaw.md
+      - '4: Testing The System': 04-test-the-system.md
       - '4: Pre Deployment Checks': '04-pre-deployment-checks.md'
       - '5: Chainsaw test': '05-chainsaw-test.md'
       - '6: Evaluate & Promote Deployments': '06-evaluate-and-promote.md'
