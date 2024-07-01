@@ -16,7 +16,7 @@ We will use the already existing Python script `checkmaintenance.py` that is sto
 
 ### Create KeptnTaskDefinition
 
-Create a new file `maintenance-window-check.yaml` in the `charts/demo-app/templates` folder of your repository and add the following content:
+Create a new file `maintenance-window-check.yaml` in the `charts/demo-app/templates/keptn` folder of your repository and add the following content:
 
 ```yaml
 {% raw %}
@@ -30,6 +30,9 @@ spec:
   python:
     httpRef: 
       url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/tasks/checkmaintenance.py
+    parameters:
+      map:
+        url: https://raw.githubusercontent.com/{{ .Values.repo.name }}/{{ .Values.repo.revision }}/data/maintenance.json
 {% endraw %}
 ```
 
@@ -37,17 +40,13 @@ This KeptnTaskDefinition defines a task that retries 3 times with a timeout of 5
 
 ### Assign Task to KeptnApp
 
-TODO: update this
-
-To assign this task to a KeptnApp, you need to add it to the `KeptnAppContext`, as shown in the example below:
+To assign this task to a KeptnApp, you need to add it to the `KeptnAppContext`.
+To do that, edit the `gitops/dev/demo-app/values-specific.yaml` file as shown in the example below:
 
 ```yaml
-apiVersion: lifecycle.keptn.sh/v1
-kind: KeptnAppContext
-metadata:
-  name: demo-app
-spec:
-  preDeploymentTasks:
+keptn:
+  appContext:
+    preDeploymentTasks:
     - maintenance-window-check
 ```
 
