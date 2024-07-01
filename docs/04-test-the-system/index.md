@@ -12,7 +12,7 @@ In this exercise, you will create a Chainsaw test to verify that both `demo-app-
 
 ### Create the chainsaw test
 
-Create a new file `chainsaw-test.yaml` in the `tests/01-test-the-system` folder of your repository and add the following content:
+Create a new file `chainsaw-test.yaml` in the `tests/04-test-the-system` folder of your repository and add the following content:
 
 ```yaml
 # yaml-language-server: $schema=https://raw.githubusercontent.com/kyverno/chainsaw/main/.schemas/json/test-chainsaw-v1alpha1.json
@@ -110,7 +110,7 @@ jobs:
         uses: kyverno/action-install-chainsaw@v0.2.5
 
       - name: Run chainsaw tests
-        run: chainsaw test ./tests/01-test-the-system
+        run: chainsaw test ./tests/04-test-the-system
 {% endraw %}
 ```
 

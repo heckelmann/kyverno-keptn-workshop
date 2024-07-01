@@ -1,8 +1,0 @@
-apiVersion: lifecycle.keptn.sh/v1
-kind: KeptnAppContext
-metadata:
-  name: demo-app
-  namespace: demo-app-prod
-spec:
-  metadata:
-    commitID: {{.Values.commitID}}
