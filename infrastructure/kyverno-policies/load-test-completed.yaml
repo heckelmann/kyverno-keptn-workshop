@@ -18,7 +18,7 @@ spec:
             kinds:
             - Job/status
             operations:
-            - UPDATE           
+            - UPDATE
             selector:
               matchLabels:
                 generate.kyverno.io/rule-name: match-feature-flag-change
@@ -34,4 +34,4 @@ spec:
             args:
               "workload": "demo-app-prod"
             analysisDefinition:
-              name: demo-app-analysis            
+              name: demo-app-analysis
